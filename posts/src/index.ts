@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { Post, Category } from './entity';
 import { User } from './graphql/User';
-import { buildFederatedSchema } from './utils/buildFederatedSchema';
+import { buildFederatedSchema } from '@proplay/utils';
 import { Container } from 'typedi';
 import { createConnection, useContainer } from 'typeorm';
 import { ApolloServer } from 'apollo-server';
