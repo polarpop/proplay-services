@@ -1,0 +1,41 @@
+{
+  "name": "users",
+  "version": "1.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:production": "npm run prestart && npm prune --production",
+    "watch": "tsc --w",
+    "prestart": "npm run build",
+    "start:host": "node lib/index.js",
+    "start": "npm-run-all --parallel start:host watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@proplay/buildfederatedschema": "0.0.2",
+    "@proplay/context": "0.0.1",
+    "@proplay/message-broker": "0.0.5",
+    "@proplay/type-graphql": "^0.17.5",
+    "@proplay/utils": "0.0.1",
+    "apollo-server": "^2.9.12",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.11.0",
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
+    "pg": "^7.14.0",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^4.1.0",
+    "typedi": "^0.8.0",
+    "typeorm": "^0.2.20",
+    "typeorm-typedi-extensions": "^0.2.3"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^12.12.14",
+    "@types/node-fetch": "^2.5.4",
+    "typescript": "^3.7.2"
+  }
+}
