@@ -3,7 +3,7 @@ import { ServiceDefinition } from '@apollo/federation';
 import { context as createContext } from '@proplay/context';
 import { Post } from './graphql';
 import { User } from './entity';
-import { buildFederatedSchema } from './utils/buildFederatedSchema';
+import { buildFederatedSchema } from '@proplay/utils';
 import { Container } from 'typedi';
 import { createConnection, useContainer } from 'typeorm';
 import { ApolloServer } from 'apollo-server';
