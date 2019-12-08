@@ -47,16 +47,6 @@ class SignUpProfileInput {
 
 }
 
-@InputType({ description: "User Inputs" })
-class SignUpUserInput implements Partial<User> {
-
-  @Field(type => User)
-  convertedBy: User;
-
-  @Field(type => [User])
-  following: User[];
-
-}
 
 @InputType({ description: "Inputs for registering a user" })
 export class SignUpInput {
@@ -66,9 +56,6 @@ export class SignUpInput {
 
   @Field(type => Boolean, { nullable: true, defaultValue: false })
   isPro?: boolean;
-
-  @Field(type => SignUpUserInput, { nullable: true })
-  user?: SignUpUserInput;
 
   @Field(type => SignUpProfileInput, { nullable: true })
   profile?: SignUpProfileInput;

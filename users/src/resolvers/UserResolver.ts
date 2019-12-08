@@ -31,7 +31,7 @@ export class UserResolver {
 
   @Query(returns => [User])
   async getPros(
-    @Arg("filter") filter: any
+    @Arg("filter") filter: string
   ): Promise<User[]> {
     return await this.userRepository.find({
       where: {

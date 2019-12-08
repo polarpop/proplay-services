@@ -1,9 +1,13 @@
 import { ApolloServer } from 'apollo-server';
 import { ApolloGateway } from '@apollo/gateway';
+import { context as createContext } from '@proplay/context'; 
 import { buildServiceList } from './utils';
 import { AuthenticatedDataSource } from './datasource';
-import { createContext as context } from './context';
+import { user as userBroker } from './brokers';
+import { User } from './models';
+import { server as config } from './config';
 
+const { playground, tracing, cors, engine, port, hostname, protocol } = config;
 
 
 async function bootstrap(): Promise<any> {
@@ -19,13 +23,13 @@ async function bootstrap(): Promise<any> {
   const server = new ApolloServer({
     gateway,
     subscriptions: false,
-    tracing: true,
-    engine: true,
-    cors: true,
-    context
+    tracing,
+    engine,
+    cors,
+    context: createContext<User>({ broker: userBroker })
   });
 
-  return await server.listen();
+  return await server.listen({ hostname, protocol, port });
 }
 
 bootstrap()

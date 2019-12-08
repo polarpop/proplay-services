@@ -8,7 +8,7 @@ import {
   FieldResolver, 
   Root,
   UseMiddleware
-} from 'type-graphql';
+} from '@proplay/type-graphql';
 import { Repository } from 'typeorm';
 import { InjectRepository } from 'typeorm-typedi-extensions';
 

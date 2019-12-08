@@ -12,4 +12,4 @@ export const redis = {
   production: {
     client: config.createFromEnv('REDIS')
   }
-};
+}

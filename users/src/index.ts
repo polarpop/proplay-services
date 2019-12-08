@@ -7,16 +7,17 @@ import { buildFederatedSchema } from '@proplay/utils';
 import { Container } from 'typedi';
 import { createConnection, useContainer } from 'typeorm';
 import { ApolloServer } from 'apollo-server';
-import { UserResolver, PostResolver } from './resolvers';
+import { UserResolver, PostResolver, AuthResolver } from './resolvers';
 import { resolveUserReference } from './referenceResolvers';
 import { service as broker, user as userBroker } from './brokers';
+import { server as config } from './config';
 
+const { port, hostname, protocol, tracing, playground, name } = config;
 
-const port = process.env.APOLLO_SERVER_PORT || 3002
 
 async function bootstrap(connection: any) {
   const schema = await buildFederatedSchema({
-    resolvers: [ UserResolver, PostResolver ],
+    resolvers: [ UserResolver, PostResolver, AuthResolver ],
     orphanedTypes: [ User, Post ],
     container: Container
   }, {
@@ -25,13 +26,13 @@ async function bootstrap(connection: any) {
 
   const server = new ApolloServer({
     schema,
-    tracing: true,
-    playground: true,
+    tracing,
+    playground,
     context: createContext<User>({ broker: userBroker })
   });
 
-  const { url } = await server.listen({ port });
-  const def = { url, name: 'users' };
+  const { url } = await server.listen({ port, hostname, protocol });
+  const def = { url, name };
   await broker.set(def, { keyId: 'name' });
   return url;
 }

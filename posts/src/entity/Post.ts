@@ -1,5 +1,5 @@
 import { Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Entity, OneToOne, JoinColumn, ManyToMany, JoinTable, ManyToOne } from "typeorm";
-import { Field, ObjectType, ID, Int, Directive } from "type-graphql";
+import { Field, ObjectType, ID, Int, Directive } from "@proplay/type-graphql";
 import { IsDate, IsInt, IsBoolean, Max, Min, MaxLength, MinLength } from "class-validator";
 import { Type } from 'class-transformer';
 

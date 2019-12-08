@@ -2,7 +2,8 @@ import { config } from '@proplay/utils';
 
 export const redis = {
   dev: {
-    client: {}
+    client: {
+    }
   },
   test: {
     client: config.createFromEnv('REDIS')

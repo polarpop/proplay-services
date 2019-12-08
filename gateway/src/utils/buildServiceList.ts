@@ -1,6 +1,6 @@
 import { ServiceDefinition } from '@apollo/federation';
 import { service } from '../brokers';
 
-export async function buildServiceList(): Promise<Pick<ServiceDefinition, "name" | "url">[]> {
-  return await service.scan('*');
+export async function buildServiceList(): Promise<any[]> {
+  return await service.scan('services:configuration:*');
 }

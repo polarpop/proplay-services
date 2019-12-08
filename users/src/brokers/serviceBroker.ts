@@ -6,6 +6,6 @@ export interface Service {
   url?: string;
 }
 
-const conf = Object.assign({}, redis.client, { prefix: 'services:configuration' })
+const conf = Object.assign({}, redis.client, { prefix: 'services:configuration:' })
 
-export const service: Broker<Service> = new Broker(conf);
+export const service = new Broker<Service>(conf);

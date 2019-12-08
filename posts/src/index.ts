@@ -1,14 +1,18 @@
 import "reflect-metadata";
 import { Post, Category } from './entity';
 import { User } from './graphql/User';
+import { server as config } from './config';
+import { UserMetaModel } from './models';
+import { user as userBroker, service as serviceBroker } from './brokers';
 import { buildFederatedSchema } from '@proplay/utils';
+import { context as createContext } from '@proplay/context';
 import { Container } from 'typedi';
 import { createConnection, useContainer } from 'typeorm';
 import { ApolloServer } from 'apollo-server';
 import { UserResolver, PostResolver } from './resolvers';
 import { resolvePostReference, resolveCategoryReference } from './referenceResolvers';
 
-const port = process.env.APOLLO_SERVER_PORT || 3001
+const { hostname, protocol, tracing, playground, port, name } = config;
 
 async function bootstrap(connection: any) {
   const schema = await buildFederatedSchema({
@@ -22,11 +26,15 @@ async function bootstrap(connection: any) {
 
   const server = new ApolloServer({
     schema,
-    tracing: true,
-    playground: true
+    tracing,
+    playground,
+    context: createContext<UserMetaModel>({ broker: userBroker })
   });
 
-  return await server.listen({ port })
+  const { url } = await server.listen({ port, hostname, protocol });
+  const def = { url, name };
+  await serviceBroker.set(def, { keyId: 'name' });
+  return url;
 }
 
 useContainer(Container)

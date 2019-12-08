@@ -1,4 +1,4 @@
-import { Directive, ObjectType, Field, ID } from 'type-graphql';
+import { Directive, ObjectType, Field, ID } from '@proplay/type-graphql';
 
 @Directive("@extends")
 @Directive(`@key(fields: "id")`)

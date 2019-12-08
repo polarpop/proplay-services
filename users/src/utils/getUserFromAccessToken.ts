@@ -10,7 +10,12 @@ interface AccessTokenOptions {
 
 export interface AccessTokenMetadata {
   id: string;
-  [key: string]: any;
+  profile: {
+    email?: string;
+    username?: string;
+    name?: string;
+    picture?: string;
+  }
   source: 'google' | 'facebook' | 'apple';
 }
 
@@ -46,11 +51,11 @@ async function tokenSlushBucket(token: string) {
 
 }
 
-export async function getUserFromAccessToken(token: string, options: AccessTokenOptions = {}): Promise<AccessTokenResponse> {
+export async function getUserFromAccessToken(token: string, options: AccessTokenOptions = {}) {
   const data = await tokenSlushBucket(token);
   const repo: Repository<User> = getRepository(User);
-  if (!userInfo) return Promise.reject(new Error(`Unauthenticated`));
-  if (options.returnMetadataOnly)  { 
+  if (!data) return Promise.reject(new Error(`Unauthenticated`));
+  if (options?.returnMetadataOnly)  { 
     const info = data.userInfo;
     return {
       source: data.source,

@@ -1,4 +1,4 @@
-import { Directive, ObjectType, Field, ID } from 'type-graphql';
+import { Directive, ObjectType, Field, ID } from '@proplay/type-graphql';
 import { Profile } from './Profile';
   
 import { Type } from "class-transformer";
