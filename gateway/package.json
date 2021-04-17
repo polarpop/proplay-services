@@ -24,7 +24,7 @@
     "redis": "^2.8.0"
   },
   "devDependencies": {
-    "@types/node": "12.12.14",
+    "@types/node": "12.20.10",
     "@types/node-fetch": "2.5.4",
     "@types/redis": "2.8.14",
     "typescript": "3.7.3"
