@@ -20,7 +20,7 @@
     "@proplay/message-broker": "0.0.15",
     "@proplay/utils": "0.0.1",
     "apollo-server": "^2.9.12",
-    "graphql": "^14.5.8",
+    "graphql": "^15.0.0",
     "redis": "^3.0.0"
   },
   "devDependencies": {
