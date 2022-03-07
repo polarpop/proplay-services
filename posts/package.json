@@ -22,7 +22,7 @@
     "@proplay/utils": "0.0.2",
     "apollo-server": "^2.14.2",
     "class-transformer": "^0.4.0",
-    "class-validator": "^0.11.0",
+    "class-validator": "^0.13.0",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
     "pg": "^8.0.0",
