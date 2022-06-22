@@ -27,7 +27,7 @@
     "graphql-tag": "^2.10.1",
     "pg": "^8.0.0",
     "reflect-metadata": "^0.1.13",
-    "sqlite3": "^5.0.0",
+    "sqlite3": "^5.0.3",
     "typedi": "^0.8.0",
     "typeorm": "^0.2.20",
     "typeorm-typedi-extensions": "^0.4.0"
