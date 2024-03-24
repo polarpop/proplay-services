@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/gateway": "^0.26.0",
+    "@apollo/gateway": "^0.54.0",
     "@proplay/context": "0.0.12",
     "@proplay/message-broker": "0.0.15",
     "@proplay/utils": "0.0.1",
