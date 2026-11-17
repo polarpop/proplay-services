@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/federation": "^0.23.0",
+    "@apollo/federation": "^0.38.0",
     "@proplay/context": "0.0.12",
     "@proplay/message-broker": "0.0.15",
     "@proplay/type-graphql": "^0.17.5",
